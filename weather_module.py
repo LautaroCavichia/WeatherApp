@@ -13,10 +13,14 @@ def get_weather(city):
         description = result['weather'][0]['description']
 
         probability_of_rain = result.get('rain', {}).get('1h', 0)
-
+        # log version:
         print(f"Temperature: {temperature_celsius:.2f}°C")
         print(f"Description: {description}")
         print(f"Probability of Rain (last 1 hour): {probability_of_rain} mm")
+
+        # return version:
+        return f"Temperature: {temperature_celsius:.2f}°C\nDescription: {description}\nProbability of Rain (last 1 hour): {probability_of_rain} mm"
     else:
         error_message = result.get('message', 'Unknown error')
         print(f"Error: {error_message}")
+        return f"Error: {error_message}"
